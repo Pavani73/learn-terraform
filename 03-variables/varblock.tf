@@ -70,8 +70,9 @@ output "env"{
 }
 
 # terraform.tfvars file practice
+
 variable "url"{}
 
 output "url"{
-  value=var.url
+  value = var.url
 }
