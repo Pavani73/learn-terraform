@@ -16,11 +16,12 @@ data "aws_ec2_spot_price" "example" {
 output "price"{
   value = data.aws_ec2_spot_price.example.spot_price
 }
-
+# https://registry.terraform.io/providers/hashicorp/aws/4.7.0/docs/data-sources/security_group
+# this link belongs to below code, it explains each and every argument)
 data "aws_security_group" "selected" {
   name = "allow-all"
 }
 
 output "sgid"{
-  value = data.aws_security_group.selected.name
+  value = data.aws_security_group.selected.id
 }
