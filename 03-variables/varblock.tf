@@ -61,3 +61,10 @@ output "courses"{
 output "course_details"{
  value = var.course_details["devops"]
 }
+
+#environment variable practice
+variable  "env"{}
+
+output "env"{
+  value = var.env
+}
