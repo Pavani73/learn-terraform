@@ -5,7 +5,7 @@ resource "aws_instance" "web" {
   vpc_security_group_ids = [aws_security_group.sg.id] /* hare we are allocating security group to ec2 instance (sample) which is created above*/
 
   tags = {
-    Name = "sample"
+    Name = var.name /*"sample"*/
   }
 }
 /* here we are giving our AMI details */
@@ -19,7 +19,7 @@ output "ami" {
 }
 /* security group creation*/
 resource "aws_security_group" "sg" {
-  name        = "sample"
+  name        = var.name /*"sample"*/
   description = "Allow TLS inbound traffic"
 
   ingress {
@@ -29,7 +29,7 @@ resource "aws_security_group" "sg" {
     protocol         = "tcp"
     cidr_blocks      = ["0.0.0.0/0"] /* we are giving access to outside world*/
 
-      }
+  }
 
   egress {
     from_port        = 0
@@ -40,6 +40,8 @@ resource "aws_security_group" "sg" {
   }
 
   tags = {
-    Name = "sample"
+    Name = var.name /*"sample"*/
   }
 }
+
+variable "name"{}
