@@ -14,5 +14,5 @@ output  "public_ip_sample1" {
 }
 
 output  "public_ip_sample2" {
-  value =module.sample1.public_ip
+  value =module.sample1.public_ip /* public_ip is written in ec2 mail.tf file */
 }
