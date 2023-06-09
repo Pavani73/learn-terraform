@@ -28,17 +28,3 @@ output "sgid"{
   value = data.aws_security_group.selected.id
 }
 
-//==============================================================================================
-
-data "aws_ami" "example1" {
-  owners           = ["973714476881"]
-  most_recent      = true
-  name_regex       = "Centos-8-DevOps-Practice "
-}
-
-output "ami" {
-  value = data.aws_ami.example1.id
-}
-provider "aws"{
-  region = "us-east-1"
-}
