@@ -18,6 +18,7 @@ output "price"{
 }
 # https://registry.terraform.io/providers/hashicorp/aws/4.7.0/docs/data-sources/security_group
 # this link belongs to below code, it explains each and every argument)
+
 data "aws_security_group" "selected" {
   name = "allow-all"
 }
@@ -25,11 +26,14 @@ output "sgid"{
   value = data.aws_security_group.selected.id
 }
 
-data "aws_ami" "example1"  {
+
+
+data "aws_ami" "example1" {
   owners           = ["973714476881"]
   most_recent      = true
   name_regex       = "Centos-8-DevOps-Practice "
 }
+
 
 output "ami" {
   value = data.aws_ami.example1.id
