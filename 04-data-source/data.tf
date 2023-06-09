@@ -30,9 +30,12 @@ data "aws_ami" "example" {
  # executable_users = ["721598433160"]
   most_recent      = true
   name_regex       = "Centos-8-DevOps-Practice "
-  owners           = [721598433160]
+  owners           = ["721598433160"]
 
 }
 output "ami"{
   value = data.aws_ami.example.id
+}
+provider "aws"{
+  region = "us-east-1"
 }
