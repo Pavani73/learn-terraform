@@ -46,7 +46,7 @@ module "rabbitmq"{
   source = "./ec2"
   name = "rabbitmq"
 }
-m
+
 
 
 
