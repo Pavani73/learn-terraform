@@ -1,4 +1,4 @@
-resource "aws_instance" "web" {
+/*resource "aws_instance" "web" {
   count = length(var.instances)
   ami           = data.aws_ami.example.id
   instance_type = "t3.micro"
@@ -6,7 +6,17 @@ resource "aws_instance" "web" {
   tags = {
     Name = "HelloWorld-${count.index}"
   }
+}*/
+resource "aws_instance" "web" {
+  count         = length(var.instances)
+  ami           = data.aws_ami.example.id
+  instance_type = "t3.micro"
+
+  tags = {
+    Name = element(var.instances, count.index)
+  }
 }
+
 
 data "aws_ami" "example" {
 
