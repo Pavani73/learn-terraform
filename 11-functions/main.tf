@@ -1,10 +1,10 @@
-Variable "class"{
+variable "class"{
 
   default = "devops"
 }
-/*print above small letter devops into capital letters */
 
-output"class"{
+ output "class"{
+   value = upper(var.class)
+ }
 
-  value = upper{var.class}
-}
+
