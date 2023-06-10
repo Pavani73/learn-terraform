@@ -21,17 +21,17 @@ output "ami" {
 variable "instances" {
 
   default = {
-    frontend ={
+    frontend = {
       name = "frontend"
       instance_type = "t3.micro"
     }
 
-    catalogue ={
+    catalogue = {
       name = "catalogue"
       instance_type = "t3.micro"
     }
 
-    cart ={
+    cart = {
       name = "cart"
       instance_type = "t3.micro"
     }
