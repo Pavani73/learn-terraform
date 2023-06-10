@@ -17,3 +17,8 @@ data "aws_ami" "example" {
 output "ami" {
   value = data.aws_ami.example.id
 }
+
+variable "instances" {
+
+  default = ["frontend", "catalogue", "cart"]
+}
