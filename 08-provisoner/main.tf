@@ -1,7 +1,7 @@
 resource "aws_instance" "web" {
   ami           = data.aws_ami.example.id
   instance_type = "t3.micro"
-  vpc_security_group_ids = "sg-0d15d1d87a0dacd37"
+  vpc_security_group_ids = {"sg-0d15d1d87a0dacd37"}
 
   tags = {
     Name = "HelloWorld"
