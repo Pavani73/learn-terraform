@@ -16,7 +16,7 @@ module "user"{
   source = "./ec2"
   name = "user"
 }
-odule "cart"{
+module "cart"{
   source = "./ec2"
   name = "cart"
 }
