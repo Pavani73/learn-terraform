@@ -19,7 +19,7 @@ resource "aws_instance" "web" {
 
     inline = [
       "sudo labauto ansible",
-      "ansible-pull -i localhost, -u https://github.com/raghudevopsb73/roboshop-ansible main.yml -e env=dev role_name=frontend"
+      "ansible-pull -i localhost, -u https://github.com/Pavani73/roboshop-ansible.git main.yml -e env=dev role_name=frontend"
     ]
   }
 }
