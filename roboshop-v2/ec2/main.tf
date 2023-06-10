@@ -1,3 +1,4 @@
+/* instance creation*/
 resource "aws_instance" "web" {
   ami           = data.aws_ami.example.id
   instance_type = "t3.micro"
@@ -9,6 +10,9 @@ resource "aws_instance" "web" {
   }
 
 }
+
+/* giving provision to run on ssh*/
+
 resource "null_resource" "ansible" {
 
 provisioner "remote-exec" {
@@ -27,6 +31,8 @@ provisioner "remote-exec" {
   ]
 }
 }
+/* creating Dns records*/
+
   resource "aws_route53_record" "www" {
     zone_id = "Z07305171TBQH7CAE4LXV" /* hostedzone id from aws*/
     name    = "${var.name}-dev"
@@ -34,12 +40,13 @@ provisioner "remote-exec" {
     ttl     = 30
     records = [aws_instance.web.private_ip]
   }
-
+/* giving our account ID and AMI ID to create instances*/
 data "aws_ami" "example" {
   owners = ["973714476881"]
   most_recent = true
   name_regex = "Centos-8-DevOps-Practice"
 }
+/* allocating our security group allow-all*/
 
 resource "aws_security_group" "sg" {
   name        = var.name /*"sample"*/
