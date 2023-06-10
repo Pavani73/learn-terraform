@@ -1,5 +1,6 @@
 resource "aws_instance" "web" {
-  count         = length(var.instances)
+  //count         = length(var.instances)
+  for_each = var.instances
   ami           = data.aws_ami.example.id
   instance_type = "t3.micro"
 
@@ -14,9 +15,7 @@ data "aws_ami" "example" {
   most_recent = true
   name_regex = "Centos-8-DevOps-Practice"
 }
-output "ami" {
-  value = data.aws_ami.example.id
-}
+
 
 variable "instances" {
 
