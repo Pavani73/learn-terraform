@@ -10,10 +10,11 @@ resource "aws_instance" "web" {
   }
 
 }
-
+//=========================================================================================================================
 /* giving provision to run on ssh*/
 
 resource "null_resource" "ansible" {
+  depends_on =[aws_instance.web,aws_route53_record.www]//after creating these 2 resources only this block of code should work
 
 provisioner "remote-exec" {
 
@@ -31,6 +32,7 @@ provisioner "remote-exec" {
   ]
 }
 }
+//========================================================================================================================
 /* creating Dns records*/
 
   resource "aws_route53_record" "www" {
@@ -40,12 +42,14 @@ provisioner "remote-exec" {
     ttl     = 30
     records = [aws_instance.web.private_ip]
   }
+//========================================================================================================================
 /* giving our account ID and AMI ID to create instances*/
 data "aws_ami" "example" {
   owners = ["973714476881"]
   most_recent = true
   name_regex = "Centos-8-DevOps-Practice"
 }
+//============================================================================================================================
 /* allocating our security group allow-all*/
 
 resource "aws_security_group" "sg" {
@@ -68,6 +72,7 @@ resource "aws_security_group" "sg" {
     cidr_blocks      = ["0.0.0.0/0"]
     ipv6_cidr_blocks = ["::/0"]
   }
+  //===========================================================================================================================
 
   tags = {
     Name = var.name /*"sample"*/
