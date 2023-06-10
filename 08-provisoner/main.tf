@@ -7,7 +7,6 @@ resource "aws_instance" "web" {
   tags = {
     Name = "HelloWorld"
   }
-
   provisioner "remote-exec" {
 
     connection {
@@ -16,6 +15,7 @@ resource "aws_instance" "web" {
       password = "DevOps321"
       host     = self.public_ip
     }
+
 
     inline = [
       "sudo labauto ansible",
