@@ -31,6 +31,14 @@ output "devops_topics" {
 
 output "aws_topics"{
 
-  value =lookup(lookup(var.classes, "aws", null), "topics", "no topics so far")
+  value = lookup(lookup(var.classes, "aws", null), "topics", "no topics so far")
 }
 
+output"fruit_0"{
+    value = var. fruits[0]
+  //value = var.fruits[4]/* it shows error, there in no 4th value*/
+}
+
+output "fruit_4"{
+  value = element(var.fruits,4)
+}
