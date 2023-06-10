@@ -9,3 +9,4 @@ terraform {
 output "demo"{
   value = "hello world"
 }
+/* in this code we are not giving any
